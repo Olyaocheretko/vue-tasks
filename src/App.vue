@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="app">
-    <PostPage></PostPage>
+    <postPage />
   </div>
 </template>
 
@@ -9,11 +9,9 @@ import PostPage from "./components/PostPage.vue"
 
 export default {
   name: 'App',
-  data: () => ({
-  }),
   components: {
     PostPage
-  }
+  },
 }
 </script>
 

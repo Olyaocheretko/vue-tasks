@@ -8,7 +8,12 @@
     </div>
 
     <div class="comments">
-      <div v-bind:id="`comment-${commentList.id}`" class="comments__item" v-for="commentList in commentsList" :key="commentList.id">
+      <div
+          :id="`comment-${commentList.id}`"
+          class="comments__item"
+          v-for="commentList in commentsList"
+          :key="commentList.id"
+      >
         <h3>{{ commentList.name }}</h3>
         <span>{{ commentList.email }}</span>
         <p>{{ formatedCommentText(commentList.body) }}</p>
@@ -72,6 +77,22 @@ export default {
       }
     ],
   }),
+  computed: {
+    formatedPostDate() {
+      let monthNames = [
+        'January', 'February', 'March',
+        'April', 'May', 'June', 'July',
+        'August', 'September', 'October',
+        'November', 'December'
+      ]
+      let date = this.post.postDate
+      let day = date.getDate()
+      let monthIndex = date.getMonth()
+      let year = date.getFullYear()
+
+      return `${day} ${monthNames[monthIndex]}, ${year}`
+    }
+  },
   methods: {
     formatedCommentText(baseString) {
       let cutNumber = 20
@@ -85,24 +106,6 @@ export default {
       return changedString
     },
   },
-  computed: {
-    formatedPostDate() {
-      let monthNames = [
-        'January', 'February', 'March',
-        'April', 'May', 'June', 'July',
-        'August', 'September', 'October',
-        'November', 'December'
-      ]
-      let date = this.post.postDate
-      //if need to set date in line with task
-      //date.setFullYear(2021, 11, 12);
-      let day = date.getDate()
-      let monthIndex = date.getMonth()
-      let year = date.getFullYear()
-
-      return `${day} ${monthNames[monthIndex]}, ${year}`
-    }
-  }
 }
 </script>
 
@@ -111,9 +114,9 @@ export default {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
-  }
-  .comments {
-    text-align: left;
-    color: #7663cb;
+    .comments {
+      text-align: left;
+      color: #7663cb;
+    }
   }
 </style>
