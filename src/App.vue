@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="app">
-    <postPage />
+    <PostPage />
   </div>
 </template>
 
