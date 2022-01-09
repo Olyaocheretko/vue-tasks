@@ -9,10 +9,10 @@
 
     <div class="comments">
       <div
-          :id="`comment-${commentList.id}`"
-          class="comments__item"
           v-for="commentList in commentsList"
+          :id="`comment-${commentList.id}`"
           :key="commentList.id"
+          class="comments__item"
       >
         <h3>{{ commentList.name }}</h3>
         <span>{{ commentList.email }}</span>
