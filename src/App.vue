@@ -7,7 +7,7 @@
 
 <script>
 //import PostPage from "./components/PostPage.vue"
-import SignUp from "./components/SignUp";
+import SignUp from "./components/SignUp.vue";
 
 export default {
   name: 'App',
