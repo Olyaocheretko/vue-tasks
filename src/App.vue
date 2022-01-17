@@ -1,8 +1,5 @@
 <template>
   <div id="app" class="app">
-<<<<<<< Updated upstream
-    <PostPage />
-=======
     <div class="app__top">
       <Header
           @loginButtonClick = "loginButtonClick"
@@ -30,33 +27,24 @@
     <div class="app__footer">
       <Footer />
     </div>
->>>>>>> Stashed changes
   </div>
 </template>
 
 <script>
-<<<<<<< Updated upstream
-import PostPage from "./components/PostPage.vue"
-=======
 //import PostPage from "./components/PostPage.vue"
 //import SignUp from "./components/SignUp.vue";
 import PostList from "./components/PostList.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
->>>>>>> Stashed changes
 
 export default {
   name: 'App',
   components: {
-<<<<<<< Updated upstream
-    PostPage
-=======
     //PostPage,
     //SignUp,
     PostList,
     Header,
     Footer,
->>>>>>> Stashed changes
   },
   data: () => ({
     continueMessage: 'continuePopUpEvent',
