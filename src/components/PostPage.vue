@@ -1,9 +1,9 @@
 <template>
   <div class="post-page">
     <div class="post">
-      <h1>{{ post.title }}</h1>
-      <p>{{ post.body }}</p>
-      <span>{{ formatedPostDate }}</span>
+      <h1 class="post__title title">{{ post.title }}</h1>
+      <p class="post__body">{{ post.body }}</p>
+      <span class="post__date text-gray">{{ formatedPostDate }}</span>
       <hr/>
     </div>
 
@@ -14,7 +14,7 @@
           :key="commentList.id"
           class="comments__item"
       >
-        <h3>{{ commentList.name }}</h3>
+        <h3 class="comments__title subtitle">{{ commentList.name }}</h3>
         <span>{{ commentList.email }}</span>
         <p>{{ formatedCommentText(commentList.body) }}</p>
       </div>
@@ -111,12 +111,27 @@ export default {
 
 <style scoped lang="scss">
   .post-page {
+    padding-top: 20px;
     background: #fff;
-    padding: 20px;
     border-radius: 10px;
+    .post {
+      &__title {
+        margin-bottom: 20px;
+      }
+      &__body {
+        margin-bottom: 10px;
+      }
+      &__date {
+        display: inline-block;
+        margin-bottom: 15px;
+        font-weight: 500;
+      }
+    }
     .comments {
       text-align: left;
-      color: #7663cb;
+      &__item {
+        margin-bottom: 15px;
+      }
     }
   }
 </style>
