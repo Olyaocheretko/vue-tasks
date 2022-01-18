@@ -1,6 +1,6 @@
 <template>
   <div class="sign-up-page">
-    <h3 class="sign-up-page__title">Sign Up</h3>
+    <h3 class="sign-up-page__title title">Sign Up</h3>
     <form class="sign-up-page__form">
       <div
           :class="[isActive === 'name' ? 'active' : '']"
@@ -328,7 +328,7 @@ export default {
     padding: 30px 0;
     text-align: left;
     &__title {
-      text-align: center;
+      margin-bottom: 20px;
     }
     &__form-item {
       margin-bottom: 10px;
@@ -354,6 +354,7 @@ export default {
       }
 
       @media (max-width:767px) {
+        margin-bottom: 5px;
         flex-direction: column;
       }
     }

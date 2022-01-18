@@ -24,6 +24,7 @@ export default {
     line-height: 0;
     &__button {
       background: #51a0e7;
+      max-height: 50px;
     }
   }
 </style>

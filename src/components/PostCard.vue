@@ -1,6 +1,6 @@
 <template>
   <div class="post-сard">
-    <h2 class="post-сard__title">{{ post.title }}</h2>
+    <h2 class="post-сard__title title">{{ post.title }}</h2>
     <p class="post-сard__body">{{ formattedText(post.body) }}</p>
     <a href="#" class="post-сard__button link">Read more</a>
   </div>
@@ -37,7 +37,7 @@ export default {
   .post-сard {
     text-align: left;
     &__title {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
   }
 </style>

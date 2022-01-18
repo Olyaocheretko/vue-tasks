@@ -1,57 +1,37 @@
 <template>
   <div class="login popup">
     <div class="login__body popup__body">
-
       <div id="tabs" class="tabs _tabs">
         <nav class="tabs__nav">
-          <div class="tabs__button _tabs-button _active">Sign In</div>
-          <div class="tabs__button _tabs-button">Sign Up</div>
+          <div
+              class="tabs__button _tabs-button"
+              @click="signIn = true"
+              :class = "[signIn ? '_active' : '']"
+          >
+            Sign In
+          </div>
+          <div
+              class="tabs__button _tabs-button"
+              @click="signIn = false"
+              :class = "[!signIn ? '_active' : '']"
+          >
+            Sign Up
+          </div>
         </nav>
-        <div class="tabs__body">
-          <section class="tabs__block _tabs-block _active">
-            <div class="tabs__block-section sign-in" id="sign-in">
-              <form action="#" class="sign-in__form form" method="post" enctype="multipart/form-data">
-                <div class="form__item">
-                  <label for="sign-in_user-login" class="form__label text">Login</label>
-                  <input id="sign-in_user-login" type="text" class="form__input" required name="uname">
-                </div>
-                <div class="form__item">
-                  <label for="sign-in_user-password" class="form__label text">Password</label>
-                  <input id="sign-in_user-password" type="password" class="form__input" required name="psw">
-                </div>
-                <button type="submit" class="form__btn btn" id="button-sign-in">Sign In</button>
-              </form>
-            </div>
-          </section>
 
-          <section class="tabs__block _tabs-block">
-            <div class="tabs__block-section sign-up" id="sign-up">
-              <form action="#" class="sign-up__form form" method="post" enctype="multipart/form-data">
-                <div class="form__item">
-                  <label for="sign-up_user-login" class="form__label text">Login</label>
-                  <input id="sign-up_user-login" type="text" class="form__input" required name="uname">
-                </div>
-                <div class="form__item">
-                  <label for="sign-up_user-password" class="form__label text">Password</label>
-                  <input id="sign-up_user-password" type="password" class="form__input" required name="psw">
-                </div>
-                <div class="form__item">
-                  <label for="sign-up_user-pass-repeated" class="form__label text">Repeated Password</label>
-                  <input id="sign-up_user-pass-repeated"  type="password" class="form__input" name="psw">
-                </div>
-                <button type="submit" class="form__btn btn" id="button-sign-up">Sign Up</button>
-              </form>
-            </div>
-          </section>
+        <div class="tabs__body">
+            <keep-alive>
+              <component :is="currentTabComponent" />
+            </keep-alive>
         </div>
       </div>
+
       <button
           class="login__button-close btn-close"
           @click="$emit('closePopUp')"
       >
         X
       </button>
-
     </div>
   </div>
 </template>
@@ -59,8 +39,21 @@
 <script>
 export default {
   name: 'LoginPopUp',
+  components: {
+    LoginSignIn: () => import("./LoginSignIn.vue"),
+    LoginSignUp: () => import("./LoginSignUp.vue"),
+  },
   data: () => ({
-}),
+    signIn: true,
+  }),
+  computed: {
+    currentTabComponent() {
+      if(this.signIn) {
+        return 'LoginSignIn'
+      }
+      return 'LoginSignUp'
+    },
+  },
 }
 </script>
 
@@ -81,11 +74,6 @@ export default {
       right: 10px;
     }
   }
-  .text {
-    color: #545353;
-    font-weight: 700;
-  }
-  /*<TABS-NAVIGATION>===========*/
   .tabs {
     &__nav {
       display: flex;
@@ -127,39 +115,42 @@ export default {
             width: 60%;
         }
       }
-      &__button._active {
+      &._active {
         background-color: #3574ad;
       }
     }
-    /*<SECTION TABS-BODY>=========*/
     &__body {
       padding: 50px;
       box-shadow: 0 1px 4px 0 rgba(51, 51, 51, 0.3);
-      min-height: 360px;
       background-color: #ffffff;
       @media (max-width: 540px) {
         padding: 30px 20px;
       }
     }
-    &__block {
-      display: none;
-      &._active {
-        display: block;
-      }
-    }
   }
+</style>
+
+<style lang="scss">
   .form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 307px;
+    @media (max-width: 540px) {
+      min-height: 295px;
+    }
     &__item {
       margin-bottom: 8px;
       display: flex;
       flex-direction: column;
+      &:last-of-type {
+        margin-bottom: 30px;
+        flex: 1 1 auto;
+      }
     }
     &__label {
       margin-bottom: 2px;
       font-size: 18px;
-    }
-    &:last-of-type {
-      margin-bottom: 30px;
     }
     &__input {
       display: block;
@@ -176,17 +167,6 @@ export default {
       &:focus {
         border: 1px solid #3574ad;
       }
-    }
-  }
-  .btn {
-    background-color: #ffffff;
-    color: #6c96bd;
-    border: 2px solid #6c96bd;
-    width: 100%;
-    &:hover {
-      background-color: #6c96bd;
-      color:#ffffff;
-      opacity: 1;
     }
   }
   .message-block {

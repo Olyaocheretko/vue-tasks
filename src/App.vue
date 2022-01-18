@@ -11,8 +11,8 @@
     </div>
 
     <div class="app__body">
-      <!--    <PostPage />
-        <SignUp />-->
+      <PostPage />
+      <SignUp />
       <PostList />
       <AppPopUp v-if="showPopUpEvent"
                 @closePopUpEvent = "closePopUpEvent"
@@ -31,8 +31,8 @@
 </template>
 
 <script>
-//import PostPage from "./components/PostPage.vue"
-//import SignUp from "./components/SignUp.vue";
+import PostPage from "./components/PostPage.vue"
+import SignUp from "./components/SignUp.vue";
 import PostList from "./components/PostList.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
@@ -40,8 +40,8 @@ import Footer from "./components/Footer.vue";
 export default {
   name: 'App',
   components: {
-    //PostPage,
-    //SignUp,
+    PostPage,
+    SignUp,
     PostList,
     Header,
     Footer,
@@ -82,6 +82,15 @@ export default {
   * {
     border: none;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size:inherit;
+    font-weight: inherit;
+  }
   a, a:visited, a:hover {
     text-decoration: none;
   }
@@ -91,6 +100,11 @@ export default {
   button::-moz-focus-inner {
     padding:0;
     border:0;
+  }
+  select {
+    text-align: right;
+    font-size: 14px;
+    color: inherit;
   }
   html,body {
     height: 100%;
@@ -153,6 +167,17 @@ export default {
       color: #565454;
       z-index: 7;
     }
+    &-white {
+      background-color: #ffffff;
+      color: #6c96bd;
+      border: 2px solid #6c96bd;
+      width: 100%;
+      &:hover {
+        background-color: #6c96bd;
+        color:#ffffff;
+        opacity: 1;
+      }
+    }
     @media (max-width:767px) {
       line-height: 25px;
     }
@@ -189,5 +214,18 @@ export default {
       border-radius: 5px;
       transform: translate(-50%, -50%);
     }
+  }
+  .title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .subtitle {
+    font-weight: 600;
+  }
+  .text-gray {
+    color: #545353;
+    font-weight: 700;
+    text-align: left;
   }
 </style>

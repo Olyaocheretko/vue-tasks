@@ -1,6 +1,6 @@
 <template>
   <div class="post-list">
-    <h3 class="post-list__title" v-once>Начальное количество статей: {{ posts.length }}</h3>
+    <h2 class="post-list__title text-gray" v-once>Initial number of articles: {{ posts.length }}</h2>
     <PostCard />
   </div>
 </template>
@@ -110,9 +110,11 @@ export default {
 
 <style scoped lang="scss">
   .post-list {
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     &__title {
-      margin-bottom: 35px;
+      margin-bottom: 15px;
+      font-weight: 500;
+      text-align: center;
     }
   }
 </style>
