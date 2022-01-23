@@ -1,7 +1,11 @@
 <template>
   <div class="post-list">
     <h2 class="post-list__title text-gray" v-once>Initial number of articles: {{ posts.length }}</h2>
-    <PostCard />
+    <PostCard
+      v-for="postItem in posts"
+      :key="postItem.id"
+      :post="postItem"
+    />
   </div>
 </template>
 
