@@ -4,7 +4,7 @@
         class="app-button__button btn"
         @click="$emit('appButtonClick')"
     >
-      Show app button message on click
+      {{ appButtonText }}
     </button>
   </div>
 </template>
@@ -12,6 +12,7 @@
 <script>
 export default {
   name: 'AppButton',
+  props: ['appButtonText'],
 }
 </script>
 

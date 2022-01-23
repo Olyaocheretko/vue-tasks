@@ -20,7 +20,8 @@
                 @continuePopUpEvent = "showMessage(continueMessage)"
       />
       <AppButton
-          @appButtonClick = "showMessage(appButtonMessage)"
+          appButtonText = "Save"
+          @appButtonClick = "showMessage('appButtonText')"
       />
     </div>
 
@@ -49,7 +50,6 @@ export default {
   data: () => ({
     continueMessage: 'continuePopUpEvent',
     backMessage: 'backPopUpEvent',
-    appButtonMessage: 'appButtonClick',
     showPopUpEvent: true,
     showLoginPopUp: false,
   }),
