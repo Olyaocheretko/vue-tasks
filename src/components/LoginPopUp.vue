@@ -28,7 +28,7 @@
 
       <button
           class="login__button-close btn-close"
-          @click="$emit('closePopUp')"
+          @click="$emit('update:showLoginPopUp', false)"
       >
         X
       </button>
@@ -42,6 +42,11 @@ export default {
   components: {
     LoginSignIn: () => import("./LoginSignIn.vue"),
     LoginSignUp: () => import("./LoginSignUp.vue"),
+  },
+  props: {
+    showLoginPopUp: {
+      type: Boolean,
+    }
   },
   data: () => ({
     signIn: true,

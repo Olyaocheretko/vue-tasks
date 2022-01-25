@@ -3,7 +3,7 @@
     <div v-html="logoHtml"></div>
     <button
         class="header-component__button btn"
-        @click="$emit('loginButtonClick')"
+        @click="$emit('update:showLoginPopUp', true)"
     >
       Log in
     </button>
@@ -13,6 +13,11 @@
 <script>
 export default {
   name: 'Header',
+  props: {
+    showLoginPopUp: {
+      type: Boolean,
+    }
+  },
   data: () => ({
     logoHtml:  '<a href=# style="display: inline-block; margin-right: 5px;"><img style="max-width: 150px;" src = "/img/logo.bcc75c20.png" alt="Logo"></a>',
   }),

@@ -45,6 +45,7 @@ export default {
 <style scoped lang="scss">
   .post-сard {
     text-align: left;
+    margin-bottom: 15px;
     &__title {
       margin-bottom: 10px;
     }

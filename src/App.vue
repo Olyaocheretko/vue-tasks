@@ -2,11 +2,11 @@
   <div id="app" class="app">
     <div class="app__top">
       <Header
-          @loginButtonClick = "loginButtonClick"
+          :showLoginPopUp.sync = "showLoginPopUp"
       />
       <LoginPopUp
           v-if="showLoginPopUp"
-          @closePopUp ="closePopUp"
+          :showLoginPopUp.sync = "showLoginPopUp"
       />
     </div>
 
@@ -51,7 +51,7 @@ export default {
     continueMessage: 'continuePopUpEvent',
     backMessage: 'backPopUpEvent',
     showPopUpEvent: true,
-    showLoginPopUp: false,
+    showLoginPopUp: '',
   }),
   methods: {
     closePopUpEvent() {
@@ -61,12 +61,6 @@ export default {
     showMessage(message) {
       console.log(message)
     },
-    loginButtonClick() {
-      this.showLoginPopUp = true
-    },
-    closePopUp() {
-      this.showLoginPopUp = false
-    }
   }
 }
 </script>
